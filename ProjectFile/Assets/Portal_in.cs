@@ -20,7 +20,7 @@ public class Portal_in : MonoBehaviour
     {
         if (manager.PortalOn)
         {
-            SceneManager.LoadScene("");
+            SceneManager.LoadScene("Ingame2");
         }
     }
 }

@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public bool water = false;
     public bool grass = false;
     public bool wind = false;
+    GameManager manager;
 
     public float RayCastline;
 
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -39,6 +41,38 @@ public class Player : MonoBehaviour
             {
                 rigid.AddForce(Vector3.up * (PlayerJump * 10));
             }
+        }
+        if (Input.GetKeyDown("1"))
+        {
+            fire = true;
+            water = false;
+            grass = false;
+            wind = false;
+        }
+        else if (Input.GetKeyDown("2"))
+        {
+            fire = false;
+            water = true;
+            grass = false;
+            wind = false;
+        }
+        else if (Input.GetKeyDown("3"))
+        {
+            fire = false;
+            water = false;
+            grass = true;
+            wind = false;
+        }
+        else if (Input.GetKeyDown("4"))
+        {
+            fire = false;
+            water = false;
+            grass = false;
+            wind = true;
+        }
+        if (Input.GetKeyDown("delete")) //ġƮ
+        {
+            manager.PortalOn = false;
         }
     }
     void FixedUpdate()
