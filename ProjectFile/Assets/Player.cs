@@ -27,6 +27,32 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Move();
+        Jump();
+        Elemental();
+        if (Input.GetKeyDown("delete")) //포탈 Off
+        {
+            manager.PortalOn = false;
+        }
+    }
+    void FixedUpdate()
+    {
+        Debug.DrawRay(transform.position, Vector3.down * RayCastline, Color.red);
+
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.down, 
+            RayCastline, LayerMask.GetMask("Ground"));
+
+        if (ray.collider != null)
+        {
+            isjump = false;
+        }
+        else
+        {
+            isjump = true;
+        }
+    }
+    void Move()
+    {
         if (Input.GetKey("a"))
         {
             transform.Translate((Vector3.left * PlayerSpeed) * Time.deltaTime);
@@ -35,6 +61,9 @@ public class Player : MonoBehaviour
         {
             transform.Translate((Vector3.right * PlayerSpeed) * Time.deltaTime);
         }
+    }
+    void Jump()
+    {
         if (Input.GetKeyDown("space"))
         {
             if (!isjump)
@@ -42,6 +71,9 @@ public class Player : MonoBehaviour
                 rigid.AddForce(Vector3.up * (PlayerJump * 10));
             }
         }
+    }
+    void Elemental()
+    {
         if (Input.GetKeyDown("1"))
         {
             fire = true;
@@ -69,26 +101,6 @@ public class Player : MonoBehaviour
             water = false;
             grass = false;
             wind = true;
-        }
-        if (Input.GetKeyDown("delete")) //ġƮ
-        {
-            manager.PortalOn = false;
-        }
-    }
-    void FixedUpdate()
-    {
-        Debug.DrawRay(transform.position, Vector3.down * RayCastline, Color.red);
-
-        RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.down, 
-            RayCastline, LayerMask.GetMask("Ground"));
-
-        if (ray.collider != null)
-        {
-            isjump = false;
-        }
-        else
-        {
-            isjump = true;
         }
     }
 }
