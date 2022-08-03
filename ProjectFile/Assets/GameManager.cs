@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         {
             Portal.SetActive(false);
         }
-        if (Input.GetKeyDown("5"))
+        if (Input.GetKeyDown("escape"))
         {
             ishelp = !ishelp;
             help.SetActive(ishelp);
