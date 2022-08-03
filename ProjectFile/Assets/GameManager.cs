@@ -13,28 +13,15 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         help.SetActive(false);
-        if (PortalOn)
-        {
-            Portal.SetActive(true);
-        }
-        else
-        {
-            Portal.SetActive(false);
-        }
+        Portal.SetActive(PortalOn);
     }
 
     
     void Update()
     {
-        if (PortalOn)
-        {
-            Portal.SetActive(true);
-        }
-        else
-        {
-            Portal.SetActive(false);
-        }
-        if (Input.GetKeyDown("escape"))
+        Portal.SetActive(PortalOn);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             ishelp = !ishelp;
             help.SetActive(ishelp);
