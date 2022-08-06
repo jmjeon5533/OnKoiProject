@@ -9,10 +9,15 @@ public class Player : MonoBehaviour
     [SerializeField]
     bool isjump = false;
 
-    public bool fire = true;
-    public bool water = false;
-    public bool grass = false;
-    public bool wind = false;
+    public enum Elemental
+    {
+        Fire = 1,
+        Water,
+        Grass,
+        Wind
+    }
+
+    public Elemental el = Elemental.Fire;
     GameManager manager;
 
     public float RayCastline;
@@ -29,7 +34,7 @@ public class Player : MonoBehaviour
     {
         Move();
         Jump();
-        Elemental();
+        elemental();
         if (Input.GetKeyDown("delete")) //포탈 Off
         {
             manager.PortalOn = false;
@@ -72,35 +77,23 @@ public class Player : MonoBehaviour
             }
         }
     }
-    void Elemental()
+    void elemental()
     {
         if (Input.GetKeyDown("1"))
         {
-            fire = true;
-            water = false;
-            grass = false;
-            wind = false;
+            el = Elemental.Fire;
         }
         else if (Input.GetKeyDown("2"))
         {
-            fire = false;
-            water = true;
-            grass = false;
-            wind = false;
+            el = Elemental.Water;
         }
         else if (Input.GetKeyDown("3"))
         {
-            fire = false;
-            water = false;
-            grass = true;
-            wind = false;
+            el = Elemental.Grass;
         }
         else if (Input.GetKeyDown("4"))
         {
-            fire = false;
-            water = false;
-            grass = false;
-            wind = true;
+            el = Elemental.Wind;
         }
     }
 }

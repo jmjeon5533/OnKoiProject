@@ -34,7 +34,7 @@ public class Sensor : MonoBehaviour
         #region 스테이지1
         if (portal.stage == 1) {
             if (CompareTag("FireSensor")) {
-                if (player.fire)
+                if ((int)player.el == 1)
                 {
                     manager.PortalOn = true;
                 }
@@ -46,28 +46,28 @@ public class Sensor : MonoBehaviour
         {
             if (CompareTag("FireSensor"))
             {
-                if (player.fire)
+                if ((int)player.el == 1)
                 {
                     PortalRate[0] = true;
                 }
             }
             else if (CompareTag("WaterSensor"))
             {
-                if (player.water)
+                if ((int)player.el == 2)
                 {
                     PortalRate[1] = true;
                 }
             }
             else if (CompareTag("GrassSensor"))
             {
-                if (player.grass)
+                if ((int)player.el == 3)
                 {
                     PortalRate[2] = true;
                 }
             }
             else if (CompareTag("WindSensor"))
             {
-                if (player.wind)
+                if ((int)player.el == 4)
                 {
                     PortalRate[3] = true;
                 }
