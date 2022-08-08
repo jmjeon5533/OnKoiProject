@@ -9,6 +9,8 @@ TagManager:
   - WaterSensor
   - GrassSensor
   - WindSensor
+  - Sensor
+  - Change
   layers:
   - Default
   - TransparentFX
